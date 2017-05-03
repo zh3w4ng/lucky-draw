@@ -3,25 +3,37 @@
  */
 (function($, window, document) {
 
-    var machine = new Machine(function(poorMan) {
+    var machine = new Machine(function(data) {
 
         // TODO convert these to React style
+        $('#btn-next').hide();
         $('.main-container').removeClass('show animated fadeOutUp');
         $('.main-container').addClass('hide');
         $('#rolling-view-container').addClass('show animated fadeInDown');
 
+        var company = window.dict[data.poorMan]['company'];
+        var name = window.dict[data.poorMan]['name'];
+        var division = window.dict[data.poorMan]['division'];
+        var backward_distance = -data.distance;
         var itemsArr = [];
-        var $items = $('.item-list li').clone().each(function(i, v){
-            itemsArr[i] = $('<li>').append($(v).text());
+        var itemsLength = window.items.length;
+        var forward_distance = 10;
+        var first = window.items.slice(backward_distance % itemsLength);
+        var middle = window.items;
+        var last = window.items.slice(0, forward_distance);
+        var itemsForThisIteration =  (first.concat(middle).concat(last)).slice(data.randomNumber - 3, data.randomNumber - backward_distance + forward_distance);
+
+        $('ul.rolling-list').empty();
+        $.each(itemsForThisIteration, function(i, v){
+            var $li = $('<li>').attr('company', window.dict[v]['company']).
+                attr('division', window.dict[v]['division']).
+                attr('name', window.dict[v]['name']).
+                append(v);
+            $('ul.rolling-list').append($li);
         });
         function loopAndLoop(counter) {
-            // this is not animation...
-            var $rolling = $('ul.rolling-list');
-            var newItemsOrder = itemsArr.slice((counter - 2) % $items.length).concat(itemsArr.slice(0, (counter - 2) % $items.length));
-            $rolling.empty();
-            for (var i = 0; i < newItemsOrder.length; i++) {
-                $rolling.append(newItemsOrder[i]);
-            }
+            var numbers = ['①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧', '⑨', '⑩', '⑪', '⑫', '⑬', '⑭', '⑮', '⑯', '⑰', '⑱', '⑲', '⑳'];
+            $('ul.rolling-list').find(":first-child").remove();
 
             var nextTime = 100;
             var winHeight = $(window).height();
@@ -34,35 +46,47 @@
                                           'margin-top': '10px'
                                       });
             $('.mask').css({
-                               'height': winHeight/2.6
+                               'height': winHeight/2.6,
+                               'width': winHeight
                            });
-
-            if (counter > $items.length) {
-
-                if ($($items.get((counter) % $items.length)).prop('id') == poorMan) {
-
-                    $('#winner-span').text(poorMan);
-                    setTimeout(function() {
-
-                        $('.main-container').removeClass('show animated fadeOutUp');
-                        $('.main-container').addClass('hide');
-                        $('#result-view-container').addClass('show animated fadeInDown');
-                    }, 1000);
-                    return;
-                } else if ($($items.get((counter+1) % $items.length)).prop('id') == poorMan) {
-                    nextTime = 800;
-                } else if ($($items.get((counter+2) % $items.length)).prop('id') == poorMan) {
-                    nextTime = 500;
-                } else if ($($items.get((counter+3) % $items.length)).prop('id') == poorMan) {
-                    nextTime = 300;
-                }
-            }
-            if (counter < $items.length * 2) {
+            if (counter == -backward_distance - 3) {
+                nextTime = 300;
+            } else if (counter == -backward_distance - 2) {
+                nextTime = 500;
+            } else if (counter == -backward_distance - 1) {
+                nextTime = 800;
+            } else if (counter == -backward_distance) {
+                var $winner = $($('ul.rolling-list li')[2])
+                $('#winner-prize').text(numbers[window.prize-1]);
+                $('#winner-id').text($winner.text());
+                $('#winner-company').text($winner.attr('company'));
+                $('#winner-division').text($winner.attr('division'));
+                $('#winner-name').text($winner.attr('name'));
 
                 setTimeout(function() {
-                    loopAndLoop(++counter);
-                }, nextTime);
+
+                    $('.main-container').removeClass('show animated fadeOutUp');
+                    $('.main-container').addClass('hide');
+                    // $('#result-view-container').addClass('show animated fadeInDown');
+                    $('#result-view-container').addClass('show');
+                    if (window.prize !== 1)
+                        $('#btn-next').show();
+                }, 1000);
+                // setTimeout(function() {
+                //     $('#winner-span').text("SIA - 123456")
+                // }, 2000)
+                // setTimeout(function(){
+                //     $('#winner-span').text("DIV - SIA - 123456")
+                // }, 2000)
+                // setTimeout(function(){
+                //     $('#winner-span').text("Zhe Wang - DIV - SIA - 123456")
+                // }, 2500)
+                return;
             }
+            setTimeout(function() {
+                loopAndLoop(++counter);
+            }, nextTime);
+
         }
         loopAndLoop(0);
     });
@@ -135,20 +159,21 @@
 
             //Result View
             $('.winner').css({
-                'font-size': winHeight/100 + 'em',
-                'margin-top': winHeight/3.5
+                'font-size': winHeight/200 + 'em',
+                'margin-top': 0
             });
-            $('#result-view-container .btn-start').css({
-                'height' :  winHeight/5,
-                'width' : winHeight/5,
-                'border-radius': ($(this).width())/2,
-                'margin-top': winHeight/8
+            $('#btn-next').css({
+                'height' :  winHeight/2.5,
+                'width' : winHeight/2.5,
+                'border-radius': ($(this).width()),
+                'margin-top': winHeight/4,
+                'margin-left': winHeight/8
             });
-            $('#result-view-container .btn-start i.fa-compass').css({
-                'font-size': $('#result-view-container .btn-start').height()/2
+            $('#btn-next i.fa-compass').css({
+                'font-size': $('#btn-next').height()/2
             });
-            $('#result-view-container .btn-start span.text').css({
-                'font-size': $('#result-view-container .btn-start').height()/5
+            $('#btn-next span.text').css({
+                'font-size': $('#btn-next').height()/5
             });
         };
 
@@ -158,12 +183,11 @@
         });
 
         function go() {
-            if ($('.item-list li').length > 0) {
-
+            // if (window.items.length > 0) {
             machine.rand();
-            } else {
-                showEditListView();
-            }
+            // } else {
+            //     showEditListView();
+            // }
         }
 
         $('.btn-start').bind('click', function() {

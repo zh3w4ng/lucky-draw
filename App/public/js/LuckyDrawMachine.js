@@ -13,8 +13,8 @@
         socket.on('candidates', function (data) {
             updateCandidates(data);
         });
-        socket.on('poorMan', function (data) {
-            updateResult(data.poorMan);
+        socket.on('randResult', function (data) {
+            updateResult(data);
         });
         socket.on('isWithoutReplacement', function(data) {
             updateIsWithoutReplacement(data);

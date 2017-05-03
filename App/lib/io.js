@@ -9,12 +9,12 @@ function boardcast(eventName, data) {
     io.sockets.emit(eventName, data);
 }
 
-io.emitCandidates = function(candidates) {
-    boardcast('candidates', candidates);
+io.emitCandidates = function(data) {
+    boardcast('candidates', data);
 };
 
-io.emitRandResult = function(poorMan) {
-    boardcast('poorMan', {poorMan: poorMan});
+io.emitRandResult = function(data) {
+    boardcast('randResult', data);
 };
 
 io.emitIsWithoutReplacement = function(isWithoutReplacement) {

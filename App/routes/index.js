@@ -1,9 +1,13 @@
 var express = require('express'),
     router = express.Router(),
-    candidates = require('../conf').preloadCandidates,
-    isWithoutReplacement = false,
+    isWithoutReplacement = true,
+    conf = require('../conf.new').preloadCandidates,
     _ = require('lodash'),
+    fs = require('fs'),
     io = require('../lib/io');
+
+var candidates = _.keys(conf);
+var dict = conf;
 
 router.post("/addCandidate", function(req, res) {
     var val = req.param('candidate');
@@ -34,23 +38,31 @@ router.post('/setWithReplacement', function(req, res) {
 });
 
 router.get('/rand', function(req, res) {
-    var randomNumber = _.random(candidates.length - 1),
-        poorMan = candidates[randomNumber];
-    io.emitRandResult(poorMan);
+    var maxDistance = 50;
+    var minDistance = 30;
+    var randomNumber = _.random(candidates.length)-1,
+        poorMan = candidates[randomNumber],
+        distance = _.random(minDistance, maxDistance);
+    console.log('Randomizing among items of: ' + candidates.length);
+    io.emitRandResult({poorMan: poorMan, randomNumber: randomNumber, distance: distance});
     if (isWithoutReplacement) {
         candidates = _.without(candidates, poorMan);
         boardcastCandidates();
     }
+    fs.appendFile('winners.txt', poorMan + "\n", function (err) {
+      if (err) throw err;
+      console.log('Saved: ' + poorMan);
+    });
     res.end();
 });
 
 io.on('connection', function(socket) {
-    socket.emit('candidates', candidates);
+    socket.emit('candidates', {candidates: candidates, dict: dict});
     socket.emit('isWithoutReplacement', isWithoutReplacement);
 });
 
 var boardcastCandidates = function() {
-        io.emitCandidates(candidates);
+        io.emitCandidates({candidates: candidates, dict: dict});
     };
 
 module.exports = router;

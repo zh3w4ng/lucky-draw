@@ -1,0 +1,7 @@
+App/winners.txt
+App/conf*.js
+list.*
+.DS_Store
+npm-debug.log
+App/node_modules/*
+App/.sass-cache/*

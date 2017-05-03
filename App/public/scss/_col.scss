@@ -30,6 +30,13 @@
     margin: 1% 0 1% 1.6%;
 }
 
+.col_r {
+  display: block;
+  float: right;
+  margin: 1% 0 1% 0;
+
+}
+
 .col:first-child { margin-left: 0; } /* all browsers except IE6 and lower */
 
 
@@ -52,10 +59,21 @@
     width: 66.13%;
 }
 
+/*
+.span_2_of_3 {
+    width: 74.2%;
+}
+*/
+
 .span_1_of_3 {
     width: 32.26%;
 }
 
+/*
+.span_1_of_3 {
+    width: 23.4%;
+}
+*/
 
 /*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
 
