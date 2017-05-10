@@ -45,8 +45,8 @@
             clearCandidates: function() {
                 $.post('/clearCandidates');
             },
-            rand: function() {
-                $.get('/rand');
+            rand: function(v) {
+                $.post('/rand', { 'prize': v} );
             },
             setWithoutReplacement: function(isWithoutReplacement) {
                 $.post('/setWithReplacement', {isWithoutReplacement: isWithoutReplacement});

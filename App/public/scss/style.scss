@@ -23,7 +23,7 @@ $primary-color: #efeedc;
 $form-input-color: #333333;
 $primary-radius: 4px;
   //Logo Enlarge
-$logo-factor: 1.5;
+$logo-factor: 1.1;
 body{
   font-family: 'PT Sans', helvetica, Arial, verdana, sans-serif;
   background: $page-background-color url('../images/bg_stars.svg') no-repeat top left;
@@ -113,9 +113,6 @@ ul, ol{
   }
 }
 
-#rolling-view-container{
-  margin-left: -150px;
-}
 .rolling-view-container{
   position: relative;
   -webkit-perspective: 800;
@@ -129,7 +126,7 @@ ul, ol{
   li{
     line-height: 0.78;
     font-weight: bold;
-    font-size: 10px;
+    font-size: 8px;
     -webkit-animation-name: y-spin;
     -webkit-animation-duration: 3s;
   }
@@ -256,11 +253,12 @@ input[type="checkbox"]{
   -vendor-animation-duration: .5s;
   -vendor-animation-delay: 1s;
   -vendor-animation-iteration-count: infinite;
-  width: 224px*$logo-factor;
+  width: 264px*$logo-factor;
   height: 91px*$logo-factor;
   img{
-    width: 205px*$logo-factor;
+    width: 255px*$logo-factor;
     height: 83px*$logo-factor;
+    margin-left: 40px*$logo-factor;
   }
   :hover{
     cursor:pointer;
@@ -276,11 +274,11 @@ input[type="checkbox"]{
   -vendor-animation-duration: .5s;
   -vendor-animation-delay: 1s;
   -vendor-animation-iteration-count: infinite;
-  width: 224px*$logo-factor;
+  width: 264px*$logo-factor;
   height: 91px*$logo-factor;
   float: right;
   img{
-    width: 205px*$logo-factor;
+    width: 255px*$logo-factor;
     height: 83px*$logo-factor;
   }
 }
@@ -298,10 +296,9 @@ input[type="checkbox"]{
 //  background: $page-background-color;
   opacity: .95;
   position: fixed;
-  width: 66%;
+//  width: 66%;
 }
 #mask-top{
-
   background: -moz-linear-gradient(top, rgba(243, 186, 51, 0.95) 90%, rgba(243, 186, 51, 0) 100%); /* FF3.6+ */
   background: -webkit-linear-gradient(top, rgba(243, 186, 51, 0.95) 90%,rgba(243, 186, 51, 0) 100%); /* Chrome10+,Safari5.1+ */
   background: linear-gradient(to bottom, rgba(243, 186, 51, 0.95) 90%,rgba(243, 186, 51, 0) 100%); /* W3C */
@@ -317,31 +314,30 @@ input[type="checkbox"]{
   left:0;
 }
 
-.winner{
+.prize{
   .fa-trophy{
-    margin-right:4px;
+    margin-right:40px;
     color: #ece9da;
-    margin-top: 0.1em;
+    /*margin-top: 0.1em;*/
   }
-  #prize-prize {
+  #prize-title {
     font-size: 0.8em;
-    margin-left: -0.8em;
   }
-  #winner-prize {
+  #prize-number {
     color: #d2b540;
-    font-size: 40%;
+    font-size: 70%;
     font-weight: bold;
+    bottom: 8px
   }
+}
+
+.winner {
   #winner-details {
     margin-left: 100px;
-    #winner-id {
-      font-size: 0.7em;
-      margin-top: 0.1em;
-    }
-    #winner-company {
+    #winner-place {
       font-size: 0.7em;
     }
-    #winner-division {
+    #winner-gender {
       font-size: 0.7em;
     }
     #winner-name {
@@ -349,6 +345,10 @@ input[type="checkbox"]{
       margin-top: 0.2em;
     }
   }
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 .float-right {

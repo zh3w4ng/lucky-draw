@@ -1,7 +1,7 @@
 var express = require('express'),
     router = express.Router(),
     isWithoutReplacement = true,
-    conf = require('../conf.new').preloadCandidates,
+    conf = require('../conf').preloadCandidates,
     _ = require('lodash'),
     fs = require('fs'),
     io = require('../lib/io');
@@ -37,7 +37,7 @@ router.post('/setWithReplacement', function(req, res) {
     res.end();
 });
 
-router.get('/rand', function(req, res) {
+router.post('/rand', function(req, res) {
     var maxDistance = 50;
     var minDistance = 30;
     var randomNumber = _.random(candidates.length)-1,
@@ -49,7 +49,7 @@ router.get('/rand', function(req, res) {
         candidates = _.without(candidates, poorMan);
         boardcastCandidates();
     }
-    fs.appendFile('winners.txt', poorMan + "\n", function (err) {
+    fs.appendFile('winners.txt', req.param('prize') + ': ' + poorMan + "\n", function (err) {
       if (err) throw err;
       console.log('Saved: ' + poorMan);
     });

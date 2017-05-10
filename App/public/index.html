@@ -15,66 +15,78 @@
 </head>
 <body  onload="window.scrollTo(0, 1);">
 <div class="wrapper">
-    <div class="col span_1_of_3">
-        <div class="logo animated slideInLeft">
-            <img src="images/logo_slim.svg" alt="Lucky Draw" class="shadowed"/>
+    <div class="section group">
+        <div class="col span_1_of_3">
+            <div class="logo animated slideInLeft">
+                <img src="images/special_draw_logo.png" alt="Lucky Draw" class="shadowed"/>
+            </div>
+        </div>
+        <div class="col span_1_of_3"> </div>
+        <div class="col_r span_1_of_3">
+            <div class="logo_r animated slideInRight">
+                <img src="images/sia_logo.png" alt="SIA 70th" class="shadowed"/>
+            </div>
         </div>
     </div>
-    <div class="col_r span_1_of_3">
-        <div class="logo_r animated slideInRight">
-            <img src="images/sq70.png" alt="SIA 70th" class="shadowed"/>
-        </div>
-    </div>
 
-    <div class="col_r span_2_of_3">
-        <!--Form-->
-        <div class="main-container hide" id="edit-item-container">
-        </div>
-
-        <!--Start View-->
-        <div class="main-container animated fadeInDown" id="start-view-container">
-            <h1 class="ready-heading">Ready?</h1>
-            <button class="btn-start btn positive-btn">
-                <i class="fa fa-compass show animated rotateIn"></i>
-                <span class="text hide animated">Go!</span>
-            </button>
-        </div>
-
-        <!--Start View-->
-        <div class="main-container hide" id="rolling-view-container">
-            <ul class="rolling-list">
-            </ul>
-            <div class="mask" id="mask-top"></div>
-            <div class="mask" id="mask-bottom"></div>
-        </div>
-
-        <!--Result-->
-        <div class="main-container hide" id="result-view-container">
-            <h1 class="winner">
-                <span class="fa-stack fa-2x">
-                    <i class="fa fa-trophy fa-stack-1x"></i>
-                    <i class="fa fa-stack-1x" id="winner-prize"></i>
+    <div class="section group">
+        <div class="col span_1_of_8"></div>
+        <div class="col span_6_of_8">
+            <h1 class="prize invisible">
+                <span class="fa-stack">
+                    <i class="fa fa-trophy fa-stack-2x hide"></i>
+                    <i class="fa fa-stack-1x" id="prize-number"></i>
                 </span>
-                <span id="prize-prize">First-Class Tickets x 2</span>
-                <span id="winner-details" class="col">
-                    <div>
-                        <span id="winner-company"></span> -
-                        <span id="winner-division"></span> -
-                        <span id="winner-id"></span>
-
-                    </div>
-
-                    <div id="winner-name"></div>
-                </span>
+                <span id="prize-title"></span>
             </h1>
         </div>
-
     </div>
-        <div class="col span_1_of_3">
+
+    <div class="section gorup">
+        <div class="col span_1_of_4"></div>
+        <div class="col span_2_of_4">
+            <div class="main-container animated fadeInDown" id="start-view-container">
+                <button class="btn-start btn positive-btn" id="btn-start">
+                    <i class="fa fa-compass show animated rotateIn"></i>
+                    <span class="text hide animated">Go!</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="section group">
+        <div class="col span_1_of_8"></div>
+        <div class="col span_6_of_8">
+            <div class="main-container hide" id="rolling-view-container">
+                <ul class="rolling-list"></ul>
+                <div class="mask" id="mask-top"></div>
+                <div class="mask" id="mask-bottom"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section group">
+        <div class="col span_1_of_8">
             <button class="btn-start btn positive-btn hide" id="btn-next">
                 <i class="fa fa-compass show animated rotateIn"></i>
                 <span class="text hide animated">Next</span>
             </button>
+            <button class="btn-start btn positive-btn hide" id="btn-redo">
+                <i class="fa fa-compass show animated rotateIn"></i>
+                <span class="text hide animated">Redraw</span>
+            </button>
+        </div>
+        <div class="col span_6_of_8">
+            <div class="main-container hide" id="result-view-container">
+                <h1 class="winner">
+                    <span id="winner-details">
+                        <div id="winner-place" class="col_r span_2_of_3"></div>
+                        <div id="winner-gender" class="col_r span_2_of_3"></div>
+                        <div id="winner-name" class="col_r span_2_of_3"></div>
+                    </span>
+                </h1>
+            </div>
+        </div>
     </div>
 </div>
 <script src="js/jquery-2.1.1.min.js"></script>

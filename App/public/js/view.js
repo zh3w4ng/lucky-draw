@@ -4,9 +4,26 @@
 (function($, window, document) {
 
     var machine = new Machine(function(data) {
+        var prizes = [
+            " A pair of SIA First Class Tickets",
+            " A pair of SIA Business Class Tickets ",
+            " A pair of SIA Premium Economy Class Tickets",
+            " A pair of SilkAir Business Class Tickets",
+            " A pair of ScootBiz Tickets ",
+            " A pair of SIA Economy Class Tickets",
+            " A pair of SilkAir Economy Class Tickets ",
+            " A pair of SilkAir Economy Class Tickets ",
+            " A pair of Scoot/Tigerair Economy Class Tickets",
+            " A pair of Scoot/Tigerair Economy Class Tickets",
+        ]
 
-        // TODO convert these to React style
         $('#btn-next').hide();
+        $('#prize-number').text(window.prize-1);
+        $('#prize-title').text(prizes[window.prize-2]);
+        $('.prize').removeClass('invisible');
+        $('.fa-trophy').show();
+
+        $('.winner').show();
         $('.main-container').removeClass('show animated fadeOutUp');
         $('.main-container').addClass('hide');
         $('#rolling-view-container').addClass('show animated fadeInDown');
@@ -28,17 +45,17 @@
             var $li = $('<li>').attr('company', window.dict[v]['company']).
                 attr('division', window.dict[v]['division']).
                 attr('name', window.dict[v]['name']).
-                append(v);
+                attr('sid', v).
+                append('XXXX' + v.slice(-4));
             $('ul.rolling-list').append($li);
         });
         function loopAndLoop(counter) {
-            var numbers = ['①', '②', '③', '④', '⑤', '⑥', '⑦', '⑧', '⑨', '⑩', '⑪', '⑫', '⑬', '⑭', '⑮', '⑯', '⑰', '⑱', '⑲', '⑳'];
             $('ul.rolling-list').find(":first-child").remove();
 
             var nextTime = 100;
             var winHeight = $(window).height();
             $('.rolling-list').css({
-                                       'height': winHeight-60,
+                                       'height': winHeight-300,
                                        'width': winHeight
                                    });
             $('.rolling-list li').css({
@@ -57,11 +74,29 @@
                 nextTime = 800;
             } else if (counter == -backward_distance) {
                 var $winner = $($('ul.rolling-list li')[2])
-                $('#winner-prize').text(numbers[window.prize-1]);
-                $('#winner-id').text($winner.text());
-                $('#winner-company').text($winner.attr('company'));
-                $('#winner-division').text($winner.attr('division'));
-                $('#winner-name').text($winner.attr('name'));
+
+                $('#winner-place').text('');
+                $('#winner-gender').text('');
+                $('#winner-name').text('');
+                $('#winner-place').removeClass('animated slideInRight')
+                $('#winner-gender').removeClass('animated slideInRight')
+                $('#winner-name').removeClass('animated slideInRight')
+                setTimeout(function() {
+                    $('#winner-place').text($winner.attr('company'));
+                    $("#winner-place").addClass('animated slideInRight')
+                }, 1000);
+
+
+                setTimeout(function() {
+                    $('#winner-gender').text("Male");
+                    $("#winner-gender").addClass('animated slideInRight')
+                }, 2000);
+
+
+                setTimeout(function() {
+                    $('#winner-name').text($winner.attr('name') + ' (' + $winner.attr('sid') + ')');
+                    $("#winner-name").addClass('animated slideInRight')
+                }, 3000);
 
                 setTimeout(function() {
 
@@ -71,16 +106,8 @@
                     $('#result-view-container').addClass('show');
                     if (window.prize !== 1)
                         $('#btn-next').show();
+                        $('#btn-redo').show();
                 }, 1000);
-                // setTimeout(function() {
-                //     $('#winner-span').text("SIA - 123456")
-                // }, 2000)
-                // setTimeout(function(){
-                //     $('#winner-span').text("DIV - SIA - 123456")
-                // }, 2000)
-                // setTimeout(function(){
-                //     $('#winner-span').text("Zhe Wang - DIV - SIA - 123456")
-                // }, 2500)
                 return;
             }
             setTimeout(function() {
@@ -128,8 +155,8 @@
         var updateStartButtonStyle = function(){
             winHeight = $(window).height();
             $('.btn-start').css({
-                'height' :  winHeight/1.5,
-                'width' : winHeight/1.5,
+                'height' :  winHeight/1.9,
+                'width' : winHeight/1.9,
                 'border-radius': ($(this).width())/2
             });
             $('.btn-start i.fa-compass').css({
@@ -163,17 +190,29 @@
                 'margin-top': 0
             });
             $('#btn-next').css({
-                'height' :  winHeight/2.5,
-                'width' : winHeight/2.5,
+                'height' :  winHeight/3.5,
+                'width' : winHeight/3.5,
                 'border-radius': ($(this).width()),
-                'margin-top': winHeight/4,
                 'margin-left': winHeight/8
             });
             $('#btn-next i.fa-compass').css({
-                'font-size': $('#btn-next').height()/2
+                'font-size': $('#btn-next').height()/2.5
             });
             $('#btn-next span.text').css({
                 'font-size': $('#btn-next').height()/5
+            });
+            $('#btn-redo').css({
+                'height' :  winHeight/5.5,
+                'width' : winHeight/5.5,
+                'border-radius': ($(this).width()),
+                'margin-left': winHeight/6,
+                'margin-top': winHeight/20
+            });
+            $('#btn-redo i.fa-compass').css({
+                'font-size': $('#btn-redo').height()/3
+            });
+            $('#btn-redo span.text').css({
+                'font-size': $('#btn-redo').height()/8
             });
         };
 
@@ -184,16 +223,24 @@
 
         function go() {
             // if (window.items.length > 0) {
-            machine.rand();
+            machine.rand(window.prize-1);
             // } else {
             //     showEditListView();
             // }
         }
 
-        $('.btn-start').bind('click', function() {
+        $('#btn-start').bind('click', function() {
+            go();
+        });
+        $('#btn-next').bind('click', function() {
+            go();
+        });
+        $('#btn-redo').bind('click', function() {
+            window.prize = window.prize + 1;
             go();
         });
         $('body').on('keydown', function(e) {
+
             if ((e.keyCode || e.which) == 13 && $('.btn-start').is(':visible')) {
                 go();
             }

@@ -4,8 +4,13 @@ require 'json'
 list = {}
 CSV.foreach("list.csv") do |row|
   # use row here...
-  id, name, company, division = row
-  list[id] = { name:  name, company: company, division: division }
+  company, id, name, gender = row
+  if gender == 'M'
+ 	gender = 'Male'
+  else
+	gender = 'Female'
+  end
+  list[id] = { name:  name, company: company, gender: gender }
 end
 
 File.open("list.json","w") do |f|

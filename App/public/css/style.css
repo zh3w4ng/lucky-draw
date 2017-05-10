@@ -412,6 +412,82 @@ table {
 
   .span_1_of_3 {
     width: 96%; } }
+/*  GRID OF FOUR   ============================================================================= */
+.span_4_of_4 {
+  width: 100%; }
+
+.span_3_of_4 {
+  width: 74.6%; }
+
+.span_2_of_4 {
+  width: 49.2%; }
+
+.span_1_of_4 {
+  width: 23.8%; }
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+@media only screen and (max-width: 480px) {
+  .span_4_of_4 {
+    width: 100%; }
+
+  .span_3_of_4 {
+    width: 100%; }
+
+  .span_2_of_4 {
+    width: 100%; }
+
+  .span_1_of_4 {
+    width: 100%; } }
+/*  GRID OF EIGHT   ============================================================================= */
+.span_8_of_8 {
+  width: 100%; }
+
+.span_7_of_8 {
+  width: 87.3%; }
+
+.span_6_of_8 {
+  width: 74.6%; }
+
+.span_5_of_8 {
+  width: 61.9%; }
+
+.span_4_of_8 {
+  width: 49.2%; }
+
+.span_3_of_8 {
+  width: 36.5%; }
+
+.span_2_of_8 {
+  width: 23.8%; }
+
+.span_1_of_8 {
+  width: 11.1%; }
+
+/*  GO FULL WIDTH AT LESS THAN 480 PIXELS */
+@media only screen and (max-width: 480px) {
+  .span_8_of_8 {
+    width: 100%; }
+
+  .span_7_of_8 {
+    width: 100%; }
+
+  .span_6_of_8 {
+    width: 100%; }
+
+  .span_5_of_8 {
+    width: 100%; }
+
+  .span_4_of_8 {
+    width: 100%; }
+
+  .span_3_of_8 {
+    width: 100%; }
+
+  .span_2_of_8 {
+    width: 100%; }
+
+  .span_1_of_8 {
+    width: 100%; } }
                  /*!
 Animate.css - http://daneden.me/animate
 Licensed under the MIT license - http://opensource.org/licenses/MIT
@@ -4320,9 +4396,6 @@ ul, ol {
       .item-list li:hover .delete:hover {
         color: #602a25; }
 
-#rolling-view-container {
-  margin-left: -150px; }
-
 .rolling-view-container {
   position: relative;
   -webkit-perspective: 800; }
@@ -4336,7 +4409,7 @@ ul, ol {
   .rolling-list li {
     line-height: 0.78;
     font-weight: bold;
-    font-size: 10px;
+    font-size: 8px;
     -webkit-animation-name: y-spin;
     -webkit-animation-duration: 3s; }
 
@@ -4436,11 +4509,12 @@ input[type="checkbox"] {
   -vendor-animation-duration: .5s;
   -vendor-animation-delay: 1s;
   -vendor-animation-iteration-count: infinite;
-  width: 336px;
-  height: 136.5px; }
+  width: 290.4px;
+  height: 100.1px; }
   .logo img {
-    width: 307.5px;
-    height: 124.5px; }
+    width: 280.5px;
+    height: 91.3px;
+    margin-left: 44px; }
   .logo :hover {
     cursor: pointer; }
   .logo .tooltip {
@@ -4452,12 +4526,12 @@ input[type="checkbox"] {
   -vendor-animation-duration: .5s;
   -vendor-animation-delay: 1s;
   -vendor-animation-iteration-count: infinite;
-  width: 336px;
-  height: 136.5px;
+  width: 290.4px;
+  height: 100.1px;
   float: right; }
   .logo_r img {
-    width: 307.5px;
-    height: 124.5px; }
+    width: 280.5px;
+    height: 91.3px; }
 
 .main-container {
   -vendor-animation-duration: .5s;
@@ -4468,8 +4542,7 @@ input[type="checkbox"] {
 
 .mask {
   opacity: .95;
-  position: fixed;
-  width: 66%; }
+  position: fixed; }
 
 #mask-top {
   background: -moz-linear-gradient(top, rgba(243, 186, 51, 0.95) 90%, rgba(243, 186, 51, 0) 100%);
@@ -4492,29 +4565,30 @@ input[type="checkbox"] {
   top: 0;
   left: 0; }
 
-.winner .fa-trophy {
-  margin-right: 4px;
+.prize .fa-trophy {
+  margin-right: 40px;
   color: #ece9da;
-  margin-top: 0.1em; }
-.winner #prize-prize {
-  font-size: 0.8em;
-  margin-left: -0.8em; }
-.winner #winner-prize {
+  /*margin-top: 0.1em;*/ }
+.prize #prize-title {
+  font-size: 0.8em; }
+.prize #prize-number {
   color: #d2b540;
-  font-size: 40%;
-  font-weight: bold; }
+  font-size: 70%;
+  font-weight: bold;
+  bottom: 8px; }
+
 .winner #winner-details {
   margin-left: 100px; }
-  .winner #winner-details #winner-id {
-    font-size: 0.7em;
-    margin-top: 0.1em; }
-  .winner #winner-details #winner-company {
+  .winner #winner-details #winner-place {
     font-size: 0.7em; }
-  .winner #winner-details #winner-division {
+  .winner #winner-details #winner-gender {
     font-size: 0.7em; }
   .winner #winner-details #winner-name {
     font-size: 1.2em;
     margin-top: 0.2em; }
+
+.invisible {
+  visibility: hidden; }
 
 .float-right {
   float: right; }
