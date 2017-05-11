@@ -6,7 +6,7 @@ var express = require('express'),
     fs = require('fs'),
     io = require('../lib/io');
 
-var candidates = _.keys(conf);
+var candidates = _.shuffle(_.keys(conf));
 var dict = conf;
 
 router.post("/addCandidate", function(req, res) {
