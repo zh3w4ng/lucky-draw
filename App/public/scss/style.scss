@@ -201,7 +201,7 @@ input[type="checkbox"]{
 
 //Specific btn
 .btn-start{
-  transition: backgrund .5s ease-out, box-shadow .5 ease-out;
+  transition: background .5s ease-out, box-shadow .5 ease-out;
   box-shadow: 0 1px 10px 0 $positive-btn-focus-background;
   text-shadow: 0 1px 3px $positive-btn-focus-background;
   &:hover{
@@ -324,7 +324,8 @@ input[type="checkbox"]{
     font-size: 0.8em;
   }
   #prize-number {
-    color: #d2b540;
+    /*color: #d2b540;*/
+    color: #c32043;
     font-size: 70%;
     font-weight: bold;
     bottom: 8px
@@ -344,6 +345,19 @@ input[type="checkbox"]{
       font-size: 1.2em;
       margin-top: 0.2em;
     }
+  }
+}
+
+.btn-next{
+  background: #c32043;
+  transition: background .5s ease-out, box-shadow .5 ease-out;
+  box-shadow: 0 1px 10px 0 $positive-btn-focus-background;
+  text-shadow: 0 1px 3px $positive-btn-focus-background;
+  &:hover{
+    box-shadow:0 1px 3px 0 $positive-btn-background;
+  }
+  .fa, .text{
+    transition:all .5s;
   }
 }
 

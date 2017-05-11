@@ -54,6 +54,7 @@
 
             var nextTime = 100;
             var winHeight = $(window).height();
+            var baseTime = 3000;
             $('.rolling-list').css({
                                        'height': winHeight-300,
                                        'width': winHeight
@@ -84,19 +85,19 @@
                 setTimeout(function() {
                     $('#winner-place').text($winner.attr('company'));
                     $("#winner-place").addClass('animated slideInRight')
-                }, 1000);
+                }, baseTime);
 
 
                 setTimeout(function() {
                     $('#winner-gender').text("Male");
                     $("#winner-gender").addClass('animated slideInRight')
-                }, 2000);
+                }, baseTime*2);
 
 
                 setTimeout(function() {
                     $('#winner-name').text($winner.attr('name') + ' (' + $winner.attr('sid') + ')');
                     $("#winner-name").addClass('animated slideInRight')
-                }, 3000);
+                }, baseTime*3);
 
                 setTimeout(function() {
 
@@ -202,10 +203,10 @@
                 'font-size': $('#btn-next').height()/5
             });
             $('#btn-redo').css({
-                'height' :  winHeight/5.5,
-                'width' : winHeight/5.5,
+                'height' :  winHeight/7,
+                'width' : winHeight/7,
                 'border-radius': ($(this).width()),
-                'margin-left': winHeight/6,
+                'margin-left': winHeight/5,
                 'margin-top': winHeight/20
             });
             $('#btn-redo i.fa-compass').css({
@@ -253,6 +254,14 @@
             $(this).children('.text').removeClass('hide flipOutX');
             $(this).children('.text').addClass('show flipInX');
         });
+
+        $('.btn-next').mouseenter(function(){
+            $(this).children('.fa-compass').removeClass('show');
+            $(this).children('.fa-compass').addClass('hide rotateOut');
+            $(this).children('.text').removeClass('hide flipOutX');
+            $(this).children('.text').addClass('show flipInX');
+        });
+
 
     });
 })(jQuery, window, document);
