@@ -43,8 +43,8 @@
         $('ul.rolling-list').empty();
         $.each(itemsForThisIteration, function(i, v){
             var $li = $('<li>').attr('company', window.dict[v]['company']).
-                attr('division', window.dict[v]['division']).
                 attr('name', window.dict[v]['name']).
+                attr('gender', window.dict[v]['gender']).
                 attr('sid', v).
                 append('XXXX' + v.slice(-4));
             $('ul.rolling-list').append($li);
@@ -89,7 +89,7 @@
 
 
                 setTimeout(function() {
-                    $('#winner-gender').text("Male");
+                    $('#winner-gender').text($winner.attr('gender'));
                     $("#winner-gender").addClass('animated slideInRight')
                 }, baseTime*2);
 
