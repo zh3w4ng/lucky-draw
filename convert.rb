@@ -10,7 +10,7 @@ CSV.foreach("list.csv") do |row|
   else
 	gender = 'Female'
   end
-  list[id] = { name:  name, company: company, gender: gender }
+  list[company+id] = { sid: id,  name:  name, company: company, gender: gender }
 end
 
 File.open("list.json","w") do |f|

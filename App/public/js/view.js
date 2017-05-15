@@ -30,7 +30,6 @@
 
         var company = window.dict[data.poorMan]['company'];
         var name = window.dict[data.poorMan]['name'];
-        var division = window.dict[data.poorMan]['division'];
         var backward_distance = -data.distance;
         var itemsArr = [];
         var itemsLength = window.items.length;
@@ -45,8 +44,8 @@
             var $li = $('<li>').attr('company', window.dict[v]['company']).
                 attr('name', window.dict[v]['name']).
                 attr('gender', window.dict[v]['gender']).
-                attr('sid', v).
-                append('XXXX' + v.slice(-4));
+                attr('sid', window.dict[v]['sid']).
+                append('XXXX' + window.dict[v]['sid'].slice(-4));
             $('ul.rolling-list').append($li);
         });
         function loopAndLoop(counter) {
