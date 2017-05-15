@@ -40,6 +40,7 @@
         var itemsForThisIteration =  (first.concat(middle).concat(last)).slice(data.randomNumber - 3, data.randomNumber - backward_distance + forward_distance);
 
         $('ul.rolling-list').empty();
+        $('#btn-redo').hide();
         $.each(itemsForThisIteration, function(i, v){
             var $li = $('<li>').attr('company', window.dict[v]['company']).
                 attr('name', window.dict[v]['name']).
@@ -55,7 +56,7 @@
             var winHeight = $(window).height();
             var baseTime = 3000;
             $('.rolling-list').css({
-                                       'height': winHeight-300,
+                                       'height': winHeight-260,
                                        'width': winHeight
                                    });
             $('.rolling-list li').css({

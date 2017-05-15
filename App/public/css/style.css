@@ -4374,7 +4374,7 @@ ul, ol {
   line-height: 1.5;
   list-style: none;
   padding: 0;
-  margin: 10px 0 5px 0; }
+  margin: 0 0 5px 0; }
   ul li, ol li {
     padding: 3px 10px; }
 
@@ -4603,6 +4603,12 @@ input[type="checkbox"] {
 
 .float-right {
   float: right; }
+
+div.no-margin-top-bottom {
+  margin-top: 0; }
+
+h1.no-margin-top-bottom {
+  margin-top: 0; }
 
 @media only screen and (max-width: 480px) {
   .logo {
