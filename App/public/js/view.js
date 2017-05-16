@@ -37,7 +37,7 @@
         var first = window.items.slice(backward_distance % itemsLength);
         var middle = window.items;
         var last = window.items.slice(0, forward_distance);
-        var itemsForThisIteration =  (first.concat(middle).concat(last)).slice(data.randomNumber - 3, data.randomNumber - backward_distance + forward_distance);
+        var itemsForThisIteration =  (first.concat(middle).concat(last)).slice(data.randomNumber - 2, data.randomNumber - backward_distance + forward_distance + 1);
 
         $('ul.rolling-list').empty();
         $('#btn-redo').hide();
@@ -55,6 +55,11 @@
             var nextTime = 100;
             var winHeight = $(window).height();
             var baseTime = 3000;
+
+            $('ul.rolling-list li').eq(0).removeClass('li-bold');
+            $('ul.rolling-list li').eq(1).addClass('li-bold');
+            $('ul.rolling-list li').eq(2).removeClass('li-bold');
+
             $('.rolling-list').css({
                                        'height': winHeight-260,
                                        'width': winHeight
@@ -74,7 +79,7 @@
             } else if (counter == -backward_distance - 1) {
                 nextTime = 800;
             } else if (counter == -backward_distance) {
-                var $winner = $($('ul.rolling-list li')[2])
+                var $winner = $($('ul.rolling-list li')[1])
 
                 $('#winner-place').text('');
                 $('#winner-gender').text('');
@@ -84,20 +89,27 @@
                 $('#winner-name').removeClass('animated slideInRight')
                 setTimeout(function() {
                     $('#winner-place').text($winner.attr('company'));
-                    $("#winner-place").addClass('animated slideInRight')
+                    $("#winner-place").addClass('animated slideInRight');
                 }, baseTime);
 
 
                 setTimeout(function() {
                     $('#winner-gender').text($winner.attr('gender'));
-                    $("#winner-gender").addClass('animated slideInRight')
+                    $("#winner-gender").addClass('animated slideInRight');
                 }, baseTime*2);
 
 
                 setTimeout(function() {
                     $('#winner-name').text($winner.attr('name') + ' (' + $winner.attr('sid') + ')');
-                    $("#winner-name").addClass('animated slideInRight')
+                    $("#winner-name").addClass('animated slideInRight gold');
                 }, baseTime*3);
+
+                setTimeout(function() {
+                    if (window.prize !== 1)
+                        $('#btn-next').show();
+                    $('#btn-redo').show();
+                }, baseTime*3.5);
+
 
                 setTimeout(function() {
 
@@ -105,9 +117,6 @@
                     $('.main-container').addClass('hide');
                     // $('#result-view-container').addClass('show animated fadeInDown');
                     $('#result-view-container').addClass('show');
-                    if (window.prize !== 1)
-                        $('#btn-next').show();
-                        $('#btn-redo').show();
                 }, 1000);
                 return;
             }
@@ -155,16 +164,16 @@
 
         var updateStartButtonStyle = function(){
             winHeight = $(window).height();
-            $('.btn-start').css({
+            $('#btn-start').css({
                 'height' :  winHeight/1.9,
                 'width' : winHeight/1.9,
                 'border-radius': ($(this).width())/2
             });
-            $('.btn-start i.fa-compass').css({
-                'font-size': $('.btn-start').height()/2.5
+            $('#btn-start i.fa-compass').css({
+                'font-size': $('#btn-start').height()/2.5
             });
-            $('.btn-start span.text').css({
-                'font-size': $('.btn-start').height()/2.5
+            $('#btn-start span.text').css({
+                'font-size': $('#btn-start').height()/2.5
             });
 
             //Rolling List
@@ -190,30 +199,33 @@
                 'font-size': winHeight/200 + 'em',
                 'margin-top': 0
             });
+
+
             $('#btn-next').css({
                 'height' :  winHeight/3.5,
                 'width' : winHeight/3.5,
-                'border-radius': ($(this).width()),
-                'margin-left': winHeight/8
+                'border-radius': ($(this).width())/5,
+                'margin-left': winHeight/10
             });
             $('#btn-next i.fa-compass').css({
                 'font-size': $('#btn-next').height()/2.5
             });
             $('#btn-next span.text').css({
-                'font-size': $('#btn-next').height()/5
+                'font-size': $('#btn-next').height()/2.25
             });
+
             $('#btn-redo').css({
                 'height' :  winHeight/7,
                 'width' : winHeight/7,
-                'border-radius': ($(this).width()),
-                'margin-left': winHeight/5,
+                'border-radius': ($(this).width())/10,
+                'margin-left': winHeight/6,
                 'margin-top': winHeight/20
             });
             $('#btn-redo i.fa-compass').css({
                 'font-size': $('#btn-redo').height()/3
             });
             $('#btn-redo span.text').css({
-                'font-size': $('#btn-redo').height()/8
+                'font-size': $('#btn-redo').height()/4
             });
         };
 
@@ -254,14 +266,6 @@
             $(this).children('.text').removeClass('hide flipOutX');
             $(this).children('.text').addClass('show flipInX');
         });
-
-        $('.btn-next').mouseenter(function(){
-            $(this).children('.fa-compass').removeClass('show');
-            $(this).children('.fa-compass').addClass('hide rotateOut');
-            $(this).children('.text').removeClass('hide flipOutX');
-            $(this).children('.text').addClass('show flipInX');
-        });
-
 
     });
 })(jQuery, window, document);

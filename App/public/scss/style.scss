@@ -125,11 +125,17 @@ ul, ol{
   -webkit-animation-duration: 2s;
   li{
     line-height: 0.78;
-    font-weight: bold;
     font-size: 8px;
     -webkit-animation-name: y-spin;
     -webkit-animation-duration: 3s;
   }
+  li.li-bold{
+    font-weight: bold;
+    color: #b7981a;
+  }
+}
+.gold {
+  color: #b7981a;
 }
 //Form
 #edit-item-form{
@@ -209,6 +215,20 @@ input[type="checkbox"]{
   }
   .fa, .text{
     transition:all .5s;
+  }
+}
+
+.btn-start.btn-red {
+  background: #c32043;
+  transition: background .5s ease-out, box-shadow .5 ease-out;
+  box-shadow: 0 1px 10px 0 $positive-btn-focus-background;
+  text-shadow: 0 1px 3px $positive-btn-focus-background;
+  &:hover{
+    box-shadow:0 1px 3px 0 $positive-btn-background;
+    background: $positive-btn-hover-background;
+  &:focus{
+    background: $positive-btn-focus-background;
+  }
   }
 }
 //Structure
@@ -337,27 +357,16 @@ input[type="checkbox"]{
     margin-left: 100px;
     #winner-place {
       font-size: 0.7em;
+      font-style: normal;
     }
     #winner-gender {
       font-size: 0.7em;
+      font-style: normal;
     }
     #winner-name {
-      font-size: 1.2em;
+      font-size: 0.8em;
       margin-top: 0.2em;
     }
-  }
-}
-
-.btn-next{
-  background: #c32043;
-  transition: background .5s ease-out, box-shadow .5 ease-out;
-  box-shadow: 0 1px 10px 0 $positive-btn-focus-background;
-  text-shadow: 0 1px 3px $positive-btn-focus-background;
-  &:hover{
-    box-shadow:0 1px 3px 0 $positive-btn-background;
-  }
-  .fa, .text{
-    transition:all .5s;
   }
 }
 
