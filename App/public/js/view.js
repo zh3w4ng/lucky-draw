@@ -211,7 +211,7 @@
                 'font-size': $('#btn-next').height()/2.5
             });
             $('#btn-next span.text').css({
-                'font-size': $('#btn-next').height()/2.25
+                'font-size': $('#btn-next').height()/2.5
             });
 
             $('#btn-redo').css({
