@@ -7,14 +7,16 @@
 //Variables
   //Background
 $page-background-color: #0b1b44;
-// $page-background-color: #f34433;
-//$tooltip-background-color: #602a25;
+/*$page-background-color: #f34433;*/
+/*$tooltip-background-color: #602a25;*/
 $tooltip-background-color: #90751c;
-//$primary-btn-background: #a33024;
-$primary-btn-background: #b7981a;
+/*$primary-btn-background: #a33024;*/
+/*$primary-btn-background: #b7981a;*/
+$primary-btn-background: #f9a630;
 $primary-btn-hover-background: #602a25;
 /*$positive-btn-background: #78a33c;*/
-$positive-btn-background: #b7981a;
+/*$positive-btn-background: #b7981a;*/
+$positive-btn-background: #f9a630;
 $positive-btn-hover-background: #50922d;
 $positive-btn-focus-background: #407424;
   //Font color
@@ -131,11 +133,11 @@ ul, ol{
   }
   li.li-bold{
     font-weight: bold;
-    color: #b7981a;
+    color: $primary-btn-background;
   }
 }
 .gold {
-  color: #b7981a;
+  color: $primary-btn-background;
 }
 //Form
 #edit-item-form{
@@ -341,7 +343,8 @@ input[type="checkbox"]{
     /*margin-top: 0.1em;*/
   }
   #prize-title {
-    font-size: 0.8em;
+    font-size: 0.9em;
+    font-family: cursive, sans-serif;
   }
   #prize-number {
     /*color: #d2b540;*/
@@ -358,14 +361,17 @@ input[type="checkbox"]{
     #winner-place {
       font-size: 0.7em;
       font-style: normal;
+      font-family: helvetica, sans-serif;
     }
     #winner-gender {
       font-size: 0.7em;
-      font-style: normal;
+      font-style: italic;
+      font-family: arial, helvetica, sans-serif;
     }
     #winner-name {
-      font-size: 0.8em;
+      font-size: 0.9em;
       margin-top: 0.2em;
+      font-family: tahoma, geneva, sans-serif;
     }
   }
 }
@@ -380,10 +386,12 @@ input[type="checkbox"]{
 
 div.no-margin-top-bottom {
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 h1.no-margin-top-bottom {
   margin-top: 0;
+  margin-bottom: 0;
 }
 
 
