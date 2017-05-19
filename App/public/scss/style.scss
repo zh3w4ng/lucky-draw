@@ -118,6 +118,7 @@ ul, ol{
 .rolling-view-container{
   position: relative;
   -webkit-perspective: 800;
+  margine-left: 10%;
 }
 .rolling-list{
   overflow-y: hidden;
@@ -275,12 +276,12 @@ input[type="checkbox"]{
   -vendor-animation-duration: .5s;
   -vendor-animation-delay: 1s;
   -vendor-animation-iteration-count: infinite;
-  width: 264px*$logo-factor;
-  height: 91px*$logo-factor;
+  width: 400px*$logo-factor;
+  height: 120px*$logo-factor;
   img{
-    width: 255px*$logo-factor;
-    height: 83px*$logo-factor;
-    margin-left: 40px*$logo-factor;
+    //width: 255px*$logo-factor;
+    height: 110px*$logo-factor; //83
+    margin-left: 60px*$logo-factor;
   }
   :hover{
     cursor:pointer;
@@ -296,12 +297,12 @@ input[type="checkbox"]{
   -vendor-animation-duration: .5s;
   -vendor-animation-delay: 1s;
   -vendor-animation-iteration-count: infinite;
-  width: 264px*$logo-factor;
-  height: 91px*$logo-factor;
+  width: 400px*$logo-factor;
+  height: 130px*$logo-factor;
   float: right;
   img{
-    width: 255px*$logo-factor;
-    height: 83px*$logo-factor;
+    // width: 255px*$logo-factor;
+    height: 120px*$logo-factor;
   }
 }
 
@@ -312,6 +313,7 @@ input[type="checkbox"]{
   -vendor-animation-iteration-count: infinite;
   width:100%;
   height: 100%;
+  margin-left: 10%;
 }
 
 .mask{
@@ -343,7 +345,7 @@ input[type="checkbox"]{
     /*margin-top: 0.1em;*/
   }
   #prize-title {
-    font-size: 0.9em;
+    font-size: 1.3em;
     font-family: cursive, sans-serif;
   }
   #prize-number {
@@ -351,7 +353,7 @@ input[type="checkbox"]{
     color: #c32043;
     font-size: 70%;
     font-weight: bold;
-    bottom: 8px
+    bottom: 15px
   }
 }
 
@@ -359,14 +361,14 @@ input[type="checkbox"]{
   #winner-details {
     margin-left: 100px;
     #winner-place {
-      font-size: 0.7em;
+      font-size: 0.8em;
       font-style: normal;
       font-family: helvetica, sans-serif;
     }
     #winner-gender {
-      font-size: 0.7em;
+      font-size: 0.8em;
       font-style: italic;
-      font-family: arial, helvetica, sans-serif;
+      font-family: helvetica, sans-serif;
     }
     #winner-name {
       font-size: 0.9em;

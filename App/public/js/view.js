@@ -61,7 +61,7 @@
             $('ul.rolling-list li').eq(2).removeClass('li-bold');
 
             $('.rolling-list').css({
-                                       'height': winHeight-260,
+                                       'height': winHeight-390,
                                        'width': winHeight
                                    });
             $('.rolling-list li').css({
@@ -205,7 +205,7 @@
                 'height' :  winHeight/3.5,
                 'width' : winHeight/3.5,
                 'border-radius': ($(this).width())/5,
-                'margin-left': winHeight/10
+                'margin-left': winHeight/5
             });
             $('#btn-next i.fa-compass').css({
                 'font-size': $('#btn-next').height()/2.5
@@ -218,7 +218,7 @@
                 'height' :  winHeight/7,
                 'width' : winHeight/7,
                 'border-radius': ($(this).width())/10,
-                'margin-left': winHeight/6,
+                'margin-left': winHeight/3.6,
                 'margin-top': winHeight/20
             });
             $('#btn-redo i.fa-compass').css({
