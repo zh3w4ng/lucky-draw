@@ -4591,7 +4591,7 @@ input[type="checkbox"] {
   color: #ece9da;
   /*margin-top: 0.1em;*/ }
 .prize #prize-title {
-  font-size: 1.3em;
+  font-size: 2.0em;
   font-family: cursive, sans-serif; }
 .prize #prize-number {
   /*color: #d2b540;*/
@@ -4628,6 +4628,12 @@ div.no-margin-top-bottom {
 h1.no-margin-top-bottom {
   margin-top: 0;
   margin-bottom: 0; }
+
+div.per-15-margin-left {
+  margin-left: 15%; }
+
+div.per-2-margin-left {
+  margin-left: 2%; }
 
 @media only screen and (max-width: 480px) {
   .logo {

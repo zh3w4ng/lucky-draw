@@ -61,7 +61,7 @@
             $('ul.rolling-list li').eq(2).removeClass('li-bold');
 
             $('.rolling-list').css({
-                                       'height': winHeight-390,
+                                       'height': winHeight-490,
                                        'width': winHeight
                                    });
             $('.rolling-list li').css({
